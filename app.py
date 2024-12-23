@@ -1,9 +1,11 @@
+import os
 import sqlite3
 from flask import Flask, render_template, request, url_for, flash, redirect
 from werkzeug.exceptions import abort
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your secret key'
+port = int(os.environ.get("PORT", 5000))
 
 def get_db_connection():
     conn = sqlite3.connect("Python Advancing\\Flask\\database.db")
@@ -79,4 +81,4 @@ def index():
     conn.close()
     return render_template('index.html', posts=posts)
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=port)
