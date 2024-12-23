@@ -5,6 +5,7 @@ from werkzeug.exceptions import abort
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your secret key'
+app.config['DEBUG'] = True
 port = int(os.environ.get("PORT", 5000))
 
 def get_db_connection():
